@@ -1,4 +1,4 @@
-from app.resources.demo import Demo
+from app.resources.demo.api import Demo
 from app.resources.static import Static
 
 
