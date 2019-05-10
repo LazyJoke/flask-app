@@ -29,9 +29,7 @@ class Doc:
             "Color": {
                 "type": "string"
             }
-        }
-
-        ,
+        },
         "responses": {
             "200": {
                 "description": "A list of colors (may be filtered by palette)",
@@ -48,6 +46,3 @@ class Doc:
             }
         }
     }
-
-
-
