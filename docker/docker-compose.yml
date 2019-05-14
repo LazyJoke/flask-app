@@ -1,13 +1,31 @@
 version: "3.1"
 
 services:
-  db:
+  mysql:
     image: mysql:5.7
-    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: --explicit_defaults_for_timestamp --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ./data:/var/lib/mysql
+      - ./data/mysql/data:/var/lib/mysql
+      - ./data/mysql/init:/docker-entrypoint-initdb.d/
     ports:
       - 3306:3306
+  flask-app:
+    image: flask-app-demo:latest
+    restart: always
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DB_NAME: demo
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./data/flask-app:/flask-app
+    ports:
+      - 10001:10001
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql

@@ -1,8 +1,13 @@
+.git
 .vscode
 .idea
-shell/migrations
-venv/
+
 *.pyc
-.idea
+
+venv/
+
 upload/
 logs/
+migrations/
+docker/data/
+!docker/data/mysql/init/init.sql
