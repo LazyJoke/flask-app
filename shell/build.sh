@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker image build -t flask-app-demo:latest .
+pipenv lock -r  > requirements.txt
+
+docker image build -f Dockerfile -t flask_app_demo:latest .

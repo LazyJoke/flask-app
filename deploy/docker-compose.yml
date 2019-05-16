@@ -12,8 +12,8 @@ services:
       - ./data/mysql/init:/docker-entrypoint-initdb.d/
     ports:
       - 3306:3306
-  flask-app:
-    image: flask-app-demo:latest
+  flask:
+    image: flask_app_demo:latest
     restart: always
     environment:
       MYSQL_HOST: mysql
@@ -22,10 +22,11 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     volumes:
-      - ./data/flask-app:/flask-app
+      - ./data/flask_app/logs:/flask_app/logs
+      - ./data/flask_app/upload:/flask_app/upload
     ports:
       - 10001:10001
     depends_on:
       - mysql
     links:
-      - mysql:mysql
+      - mysql

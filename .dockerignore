@@ -1,0 +1,10 @@
+.git
+.vscode
+.idea
+
+*.pyc
+deploy
+migrations
+upload
+logs
+

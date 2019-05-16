@@ -4,10 +4,8 @@
 
 *.pyc
 
-venv/
-
 upload/
 logs/
 migrations/
-docker/data/
-!docker/data/mysql/init/init.sql
+deploy/data/
+!deploy/data/mysql/init/init.sql
