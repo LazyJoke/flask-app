@@ -2,40 +2,24 @@ class Doc:
     GET = {
         "parameters": [
             {
-                "name": "palette",
-                "in": "path",
-                "type": "string",
-                "enum": [
-                    "all",
-                    "rgb",
-                    "cmyk"
-                ],
+                "name": "Demo",
+                "in": "body",
                 "required": "true",
-                "default": "all"
+                "description": "Film object that needs to be persisted to the database",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        'title': {
+                            "type": "string",
+                        }
+                    },
+                    "required": ["title"],
+                }
             }
         ],
-        "definitions": {
-            "Palette": {
-                "type": "object",
-                "properties": {
-                    "palette_name": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/definitions/Color"
-                        }
-                    }
-                }
-            },
-            "Color": {
-                "type": "string"
-            }
-        },
         "responses": {
             "200": {
                 "description": "A list of colors (may be filtered by palette)",
-                "schema": {
-                    "$ref": "#/definitions/Palette"
-                },
                 "examples": {
                     "rgb": [
                         "red",

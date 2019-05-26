@@ -3,6 +3,7 @@ from flask import Flask
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
+from app.core.validation_error import validation_error_inform_error
 from app.db import db
 from app.conf import Config
 from app.blueprint import register_blueprint
@@ -29,7 +30,7 @@ def create_app():
     register_blueprint(app)
 
     # 添加 Swagger
-    swag = Swagger(app)
+    swag = Swagger(app, validation_error_handler=validation_error_inform_error)
 
     app.app_context().push()
 

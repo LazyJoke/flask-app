@@ -10,8 +10,9 @@ flask-restful = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-script = "*"
-flasgger = "*"
 mysqlclient = "*"
+flasgger = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
