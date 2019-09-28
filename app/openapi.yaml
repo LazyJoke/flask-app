@@ -1,0 +1,61 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:10001/
+info:
+  title: Demo Example API
+  version: '0.1'
+paths:
+  /static/{filename}:
+    get:
+      summary: '获取静态资源'
+      operationId: app.api.common.static.get_static
+      parameters:
+        - name: filename
+          description: 相对于 static 的资源路径
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: '资源响应'
+      security:
+        - jwt: ['secret']
+  /login:
+    post:
+      summary: 用户登录
+      operationId: app.api.auth.login.login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginInfo'
+      responses:
+        '200':
+          description: jwt token
+          content:
+            'text/plain':
+              schema:
+                type: string
+components:
+  schemas:
+    UserLoginInfo:
+      title: 用户登录信息
+      type: object
+      properties:
+        username:
+          type: string
+          description: 用户名
+        password:
+          type: string
+          description: 密码
+      required:
+        - username
+        - password
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: app.core.jwt.decode_token

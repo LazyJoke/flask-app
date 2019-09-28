@@ -1,37 +1,36 @@
-from flasgger import Swagger
-from flask import Flask
+# coding=utf-8
+import connexion
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
+from swagger_ui_bundle import swagger_ui_3_path
 
-from app.core.validation_error import validation_error_inform_error
-from app.db import db
+from app.db import db, update_models
 from app.conf import Config
-from app.blueprint import register_blueprint
-from app.resources import add_resources
+from app.models import *
 
 
 def create_app():
-    app = Flask(__name__)
+    options = {'swagger_path': swagger_ui_3_path}
+    app = connexion.FlaskApp(__name__, options=options)
+    app.add_api('openapi.yaml')
 
+    application = app.app
     # 注册 config 配置
-    app.config.from_object(Config)
+    application.config.from_object(Config)
 
     # 数据迁移
-    migrate = Migrate(app, db)
+    Migrate(application, db)
 
     # 添加 flask_script
-    manager = Manager(app)
+    manager = Manager(application)
     manager.add_command('db', MigrateCommand)
 
     # 初始化数据库
-    db.init_app(app)
+    db.init_app(application)
 
-    # 注册蓝图
-    register_blueprint(app)
+    application.app_context().push()
 
-    # 添加 Swagger
-    swag = Swagger(app, validation_error_handler=validation_error_inform_error)
-
-    app.app_context().push()
+    # 初始化表或更新表
+    update_models()
 
     return manager, db

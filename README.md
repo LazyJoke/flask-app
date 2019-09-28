@@ -1,5 +1,8 @@
 ## 1. 本地开发
 
+> 环境依赖
+> Python 3.7.4
+
 #### 1.1 启动服务
 
 ```bash
@@ -12,13 +15,17 @@ python startup.py runserver -h 0.0.0.0 -p 10001 -d -r
 sh shell/migrate.sh
 ```
 
+#### 1.3 swagger UI
+
+服务启动后，在浏览器访问 `http://127.0.0.1:10001/ui`，即可查看所有的 `API` 文档
+
 ## 2. 制作 Docker 镜像
 
 ```bash
 sh shell/build.sh
 ```
 
-## 3. docker-compose
+## 3. docker-compose 启动
 
 ####  3.1 启动镜像
 ```bash

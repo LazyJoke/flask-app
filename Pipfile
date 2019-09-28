@@ -1,18 +1,17 @@
 [[source]]
-name = "pypi"
-url = "https://pypi.org/simple"
+url = "https://mirrors.aliyun.com/pypi/simple"
 verify_ssl = true
+name = "pypi"
 
 [dev-packages]
 
 [packages]
-flask-restful = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
-flask-script = "*"
-mysqlclient = "*"
-flasgger = "*"
-requests = "*"
+connexion = {extras = ["swagger-ui"],version = "*"}
+flask = "==1.1.1"
+flask-script = "==2.0.6"
+flask-migrate = "==2.5.2"
+flask-sqlalchemy = "==2.4.1"
+python-jose = {extras = ["cryptography"],version = "==3.0.1"}
 
 [requires]
 python_version = "3.7"
