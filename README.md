@@ -44,7 +44,7 @@ docker ps | grep flask_app_demo
 docker exec -it $imageId /bin/bash
 
 # 执行数据库迁移脚本
-sh shell/build.sh
+sh shell/migrate.sh
 ```
 
 ####  3.3 停止镜像
