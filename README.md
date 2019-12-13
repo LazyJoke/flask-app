@@ -6,7 +6,12 @@
 #### 1.1 启动服务
 
 ```bash
-python startup.py runserver -h 0.0.0.0 -p 10001 -d -r
+# 安装 pipenv
+pip install pipenv
+# 创建虚拟环境, 并安装依赖
+pipenv install
+# 启动服务  -m: 'dev'、'prod'
+python startup.py -H 0.0.0.0 -P 10001 -M dev
 ```
 
 #### 1.2 数据库自动初始化或迁移

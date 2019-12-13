@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.7.5
 
 ENV ROOT_DIR /flask_app
 

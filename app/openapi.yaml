@@ -10,8 +10,8 @@ paths:
       summary: '获取静态资源'
       operationId: app.api.common.static.get_static
       parameters:
-        - name: filename
-          description: 相对于 static 的资源路径
+        - name: 'filename'
+          description: '相对于 static 的资源路径'
           in: path
           required: true
           schema:
