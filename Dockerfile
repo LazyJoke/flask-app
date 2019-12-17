@@ -1,6 +1,6 @@
 FROM python:3.7.5
 
-ENV ROOT_DIR /flask_app
+ENV ROOT_DIR /web
 
 ADD app $ROOT_DIR/app
 ADD shell $ROOT_DIR/shell

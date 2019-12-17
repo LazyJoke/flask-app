@@ -1,13 +1,14 @@
+# coding=utf-8
 import time
 import six
 from werkzeug.exceptions import Unauthorized
 
 from jose import JWTError, jwt
 
-from app.conf import SECRET_KEY
+from app.conf.env_conf import ENV_CONF
 
 JWT_ISSUER = 'com.email.name'
-JWT_SECRET = SECRET_KEY
+JWT_SECRET = ENV_CONF.SECRET_KEY
 JWT_LIFETIME_SECONDS = 60 * 60 * 6
 JWT_ALGORITHM = 'HS256'
 

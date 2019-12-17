@@ -1,0 +1,13 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:10001/
+info:
+  title: Demo Example API
+  version: '0.1'
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      x-bearerInfoFunc: app.core.jwt.decode_token
