@@ -1,8 +1,9 @@
+openapi: 3.0.0
 paths:
   /static/{filename}:
     get:
       summary: '获取静态资源'
-      operationId: app.api.common.static.get_static
+      operationId: app.api.common.static.api.get_static
       parameters:
         - name: 'filename'
           description: '相对于 static 的资源路径'

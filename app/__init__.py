@@ -13,6 +13,8 @@ from app.conf.env_conf import ENV_CONF
 from app.core.openapi import yaml_load
 from app.models import *
 
+session = db.session
+
 
 def create_app():
     # 配置 swagger_ui

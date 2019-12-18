@@ -1,8 +1,9 @@
+openapi: 3.0.0
 paths:
   /login:
     post:
       summary: 用户登录
-      operationId: app.api.auth.login.login
+      operationId: app.api.auth.login.api.login
       requestBody:
         required: true
         content:

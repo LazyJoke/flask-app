@@ -1,7 +1,4 @@
-
-from connexion import NoContent
-from connexion.decorators.security import session
-
+from app import session
 from app.core.jwt import generate_token
 from app.models.user import UserModel
 
@@ -11,4 +8,4 @@ def login(body):
     if not user:
         return "用户名或密码错误", 400
     # 返回 Token
-    return generate_token(user.user_id), 200
+    return generate_token(user.id), 200
