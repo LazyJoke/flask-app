@@ -1,9 +1,8 @@
 # coding=utf-8
-import time
 import six
-from werkzeug.exceptions import Unauthorized
-
+import time
 from jose import JWTError, jwt
+from werkzeug.exceptions import Unauthorized
 
 from app.conf.env_conf import ENV_CONF
 
@@ -14,7 +13,7 @@ JWT_ALGORITHM = 'HS256'
 
 
 def generate_token(user_id):
-    timestamp = _current_timestamp()
+    timestamp = current_timestamp()
     payload = {
         "iss": JWT_ISSUER,
         "iat": int(timestamp),
@@ -32,12 +31,5 @@ def decode_token(token):
         six.raise_from(Unauthorized, e)
 
 
-def get_secret(user, token_info) -> str:
-    return '''
-    You are user_id {user} and the secret is 'abc'.
-    Decoded token claims: {token_info}.
-    '''.format(user=user, token_info=token_info)
-
-
-def _current_timestamp() -> int:
+def current_timestamp() -> int:
     return int(time.time())

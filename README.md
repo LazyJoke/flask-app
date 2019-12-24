@@ -1,8 +1,64 @@
 ## 1. 本地开发
 
 > 环境依赖
-> Python 3.7.5
+- Python版本 - 3.7.5
+- 核心库 - [connexion](https://github.com/zalando/connexion)
+- 单元测试 - [flask-testing](https://flask-testing.readthedocs.io/en/latest/#flask_testing)
 
+```text
+├── app
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── auth
+│   │   │   ├── __init__.py
+│   │   │   └── login
+│   │   │       ├── __init__.py
+│   │   │       ├── api.py
+│   │   │       ├── api.yaml
+│   │   │       └── test.py
+│   │   └── common
+│   │       ├── __init__.py
+│   │       └── static
+│   │           ├── __init__.py
+│   │           ├── api.py
+│   │           └── api.yaml
+│   ├── api_base.yaml
+│   ├── common
+│   │   ├── __init__.py
+│   │   ├── secret.py
+│   │   └── utils.py
+│   ├── conf
+│   │   ├── __init__.py
+│   │   └── env_conf.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── db.py
+│   │   ├── jwt.py
+│   │   ├── logger.py
+│   │   ├── openapi.py
+│   │   └── test.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── user.py
+│   └── static
+│       └── openapi.png
+├── deploy
+│   └── docker-compose.yml
+├── logs
+│   ├── error.log
+│   └── info.log
+├── migrations
+├── shell
+│   ├── build.sh
+│   └── migrate.sh
+├── startup.py
+├──  test.py
+├── Dockerfile
+├── Pipfile
+├── Pipfile.lock
+└── README.md
+```
 #### 1.1 启动服务
 
 ```bash
@@ -17,6 +73,7 @@ export ROOT_DIR=$(pwd)/app && python startup.py -H 0.0.0.0 -P 10001 -M dev
 ```
 
 #### 1.2 执行测试
+> 单元测试使用 
 
 ```bash
 # 进入当前项目根目录
